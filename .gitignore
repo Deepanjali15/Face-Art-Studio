@@ -1,0 +1,36 @@
+# Unity generated
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+.utmp/
+
+# IL2CPP backup folder
+*_BackUpThisFolder_ButDontShipItInYourGame/
+*_BurstDebugInformation_DoNotShip/
+
+# IDE
+.vscode/
+.vs/
+.idea/
+*.csproj
+*.sln
+*.slnx
+*.suo
+*.user
+*.pdb
+*.mdb
+
+# Build outputs
+*.apk
+*.aab
+*.unitypackage
+
+# Misc
+.gradle/
+sysinfo.txt
+crashlytics-build.properties
