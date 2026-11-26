@@ -1,43 +1,94 @@
-# Face Art Studio (AR FaceCanvas)
+<div align="center">
 
-A real-time **augmented reality face-painting app for Android**. Open the front camera, pick a colour, and paint directly on your own face. The paint is attached to the tracked 3D face mesh, so it follows your head as you move.
+# 🎨 Face Art Studio
 
-Built with **Unity 6**, **AR Foundation** and **Google ARCore (Augmented Faces)**.
+### *AR FaceCanvas: paint on your own face, in real time*
 
-> Course project for *21CSE353T – Augmented, Virtual and Mixed Reality*, B.Tech Computer Science and Engineering, SRM Institute of Science and Technology, Kattankulathur.
+A real-time **augmented reality face-painting app for Android**.<br>
+Open the front camera, pick a colour, and paint directly on your face. The paint sticks to the tracked 3D face mesh and follows your head as you move.
 
-## Download
+<br>
 
-Grab the latest APK from the [Releases page](https://github.com/Deepanjali15/Face-Art-Studio/releases/latest) and install it on an Android phone.
+![Unity](https://img.shields.io/badge/Unity_6-000000?style=for-the-badge&logo=unity&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![ARCore](https://img.shields.io/badge/Google_ARCore-4285F4?style=for-the-badge&logo=google&logoColor=white)
+![AR Foundation](https://img.shields.io/badge/AR_Foundation-222C37?style=for-the-badge&logo=unity&logoColor=white)
+![URP](https://img.shields.io/badge/URP-1A1A1A?style=for-the-badge&logo=unity&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
-**Requirement:** the phone must support **ARCore Augmented Faces** (front-camera face tracking). Check the [ARCore supported devices list](https://developers.google.com/ar/devices). Not every ARCore phone supports it.
+[![Latest Release](https://img.shields.io/github/v/release/Deepanjali15/Face-Art-Studio?style=flat-square&color=ff69b4&label=release)](https://github.com/Deepanjali15/Face-Art-Studio/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/Deepanjali15/Face-Art-Studio/total?style=flat-square&color=3DDC84&label=downloads)](https://github.com/Deepanjali15/Face-Art-Studio/releases)
+[![Stars](https://img.shields.io/github/stars/Deepanjali15/Face-Art-Studio?style=flat-square&color=f1c40f)](https://github.com/Deepanjali15/Face-Art-Studio/stargazers)
+[![License](https://img.shields.io/github/license/Deepanjali15/Face-Art-Studio?style=flat-square&color=blue)](LICENSE)
+![Platform](https://img.shields.io/badge/platform-Android-3DDC84?style=flat-square)
+![Course](https://img.shields.io/badge/course-21CSE353T-8e44ad?style=flat-square)
 
-## Screenshots
+<br>
 
-<!-- Add screenshots to a docs/ folder and link them here, e.g.
-![Painting on a face](docs/painting.png)
-![Colour palette and controls](docs/ui.png)
+[⬇️ **Download APK**](https://github.com/Deepanjali15/Face-Art-Studio/releases/latest) &nbsp;•&nbsp;
+[✨ Features](#-features) &nbsp;•&nbsp;
+[⚙️ How it works](#️-how-it-works) &nbsp;•&nbsp;
+[🛠️ Run from source](#️-run-it-from-source) &nbsp;•&nbsp;
+[👥 Team](#-team)
+
+</div>
+
+---
+
+> 🎓 Course project for *21CSE353T – Augmented, Virtual and Mixed Reality*, B.Tech Computer Science and Engineering, SRM Institute of Science and Technology, Kattankulathur.
+
+## 📥 Download
+
+Grab the latest APK from the [**Releases page**](https://github.com/Deepanjali15/Face-Art-Studio/releases/latest) and install it on an Android phone.
+
+> [!IMPORTANT]
+> The phone must support **ARCore Augmented Faces** (front-camera face tracking). Check the [ARCore supported devices list](https://developers.google.com/ar/devices). Not every ARCore phone supports it.
+
+## 📸 Screenshots
+
+<!-- Add your screenshots to a docs/ folder, then delete this comment markers and keep the table.
+
+<div align="center">
+
+| Painting on a face | Colour palette and controls | Saved artwork |
+|:---:|:---:|:---:|
+| <img src="docs/painting.png" width="240"> | <img src="docs/ui.png" width="240"> | <img src="docs/saved.png" width="240"> |
+
+</div>
+
+Tip: a short GIF of you painting and moving your head (docs/demo.gif) shows the "paint follows the face" effect better than anything else.
+
+<div align="center"><img src="docs/demo.gif" width="300"></div>
 -->
 
-## Features
+## ✨ Features
 
-- Real-time face detection and tracking through the front camera (one face)
-- Freehand painting on the face by touch, mapped through the face mesh UV coordinates
-- Colour palette and Small / Medium / Large brush presets
-- Eraser, Paint mode and Clear All
-- Paint stays aligned with the face while you move your head
-- Paint is kept and restored when tracking is lost and the face comes back into view
-- Save Artwork: captures the camera view with the UI hidden and saves a PNG to the phone's gallery (album "Face Art Studio")
-- Developer tools: face wireframe overlay and a debug HUD (tracking state, FPS, vertex count)
+| | Feature |
+|:---:|---|
+| 👤 | Real-time face detection and tracking through the front camera (one face) |
+| 🖌️ | Freehand painting by touch, mapped through the face mesh UV coordinates |
+| 🎨 | Colour palette with **Small / Medium / Large** brush presets |
+| 🧽 | Eraser, Paint mode and **Clear All** |
+| 🎯 | Paint stays aligned with the face while you move your head |
+| 🔄 | Paint is kept and restored when tracking is lost and the face comes back |
+| 💾 | **Save Artwork**: captures the camera view with the UI hidden and saves a PNG to the gallery (album "Face Art Studio") |
+| 🧪 | Developer tools: face wireframe overlay and debug HUD (tracking state, FPS, vertex count) |
 
-## How it works
+## ⚙️ How it works
 
-```
-Front camera -> ARCore face tracking -> AR Foundation (ARFaceManager)
-   -> CustomFacePrefab (face mesh + Mesh Collider + paint overlay)
-Touch -> ray from AR camera -> raycast hits face collider -> hit.textureCoord (UV)
-   -> FacePaintBrush -> FacePaintTexture (updates RGBA32 paint texture)
-   -> paint overlay renders the texture on top of the live camera image
+```mermaid
+flowchart LR
+    A[📷 Front camera] --> B[ARCore face tracking]
+    B --> C[AR Foundation<br/>ARFaceManager]
+    C --> D[CustomFacePrefab<br/>face mesh + Mesh Collider + paint overlay]
+    E[👆 Touch] --> F[Ray from AR camera]
+    F --> G[Raycast hits face collider]
+    G --> H[hit.textureCoord UV]
+    H --> I[FacePaintBrush]
+    I --> J[FacePaintTexture<br/>RGBA32 paint texture]
+    J --> D
 ```
 
 1. **Tracking:** ARCore supplies the face mesh; AR Foundation exposes it as an `ARFace`.
@@ -46,9 +97,14 @@ Touch -> ray from AR camera -> raycast hits face collider -> hit.textureCoord (U
 4. **Painting:** the brush updates pixels in a runtime transparent texture. Strokes are interpolated between UV points so fast movement draws a continuous line.
 5. **Recovery:** the paint pixels are stored when the face is lost and restored when the face is tracked again.
 
-## Scripts
+## 📜 Scripts
 
 All scripts are in `Assets/Scripts/FacePainting/`.
+
+<details>
+<summary><b>Click to expand the script table</b></summary>
+
+<br>
 
 | Script | Purpose |
 |---|---|
@@ -65,17 +121,25 @@ All scripts are in `Assets/Scripts/FacePainting/`.
 | `FaceDebugHUD` | Debug text: tracking state, FPS, vertex count |
 | `UvChecker`, `UvTemplateExporter` | Helpers for inspecting the face mesh UV layout and exporting a UV template PNG |
 
-## Tech stack
+</details>
 
-- Unity **6000.6.8f1** (Unity 6)
-- C#
-- AR Foundation + Google ARCore XR Plugin
-- Universal Render Pipeline (URP)
-- Unity Input System (new)
-- TextMeshPro
+## 🧰 Tech stack
+
+<div align="center">
+
+![Unity](https://img.shields.io/badge/Unity-6000.6.8f1-000000?style=flat-square&logo=unity&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=csharp&logoColor=white)
+![ARCore](https://img.shields.io/badge/ARCore_XR_Plugin-4285F4?style=flat-square&logo=google&logoColor=white)
+![AR Foundation](https://img.shields.io/badge/AR_Foundation-222C37?style=flat-square&logo=unity&logoColor=white)
+![URP](https://img.shields.io/badge/Universal_Render_Pipeline-1A1A1A?style=flat-square&logo=unity&logoColor=white)
+![Input System](https://img.shields.io/badge/Input_System-new-555555?style=flat-square&logo=unity&logoColor=white)
+![TextMeshPro](https://img.shields.io/badge/TextMeshPro-555555?style=flat-square&logo=unity&logoColor=white)
+
+</div>
+
 - [NativeGallery](https://github.com/yasirkula/UnityNativeGallery) for saving images to the Android gallery
 
-## Run it from source
+## 🛠️ Run it from source
 
 1. Install **Unity 6000.6.8f1** through Unity Hub, with **Android Build Support** (SDK, NDK, OpenJDK).
 2. Clone the repo. It uses Git LFS for large binary assets, so install [Git LFS](https://git-lfs.com/) first.
@@ -89,13 +153,21 @@ All scripts are in `Assets/Scripts/FacePainting/`.
 6. In **Project Settings > XR Plug-in Management**, make sure **ARCore** is enabled for Android.
 7. Connect an ARCore face-tracking capable phone with USB debugging on, then **Build And Run**.
 
-The app does not run in the Unity Editor. It needs a real device with front-camera face tracking.
+> [!NOTE]
+> The app does not run in the Unity Editor. It needs a real device with front-camera face tracking.
 
-## Testing
+## 🧪 Testing
 
-Tested on a **Samsung Galaxy S23 Ultra**. Observed in one diagnostic session: about 26 FPS and 468 face-mesh vertices. That is a single reading, not a benchmark, and results will vary by device and lighting.
+Tested on a **Samsung Galaxy S23 Ultra**. Observed in one diagnostic session:
 
-## Known limitations
+| Metric | Reading |
+|---|---|
+| Frame rate | ~26 FPS |
+| Face-mesh vertices | 468 |
+
+That is a single reading, not a benchmark, and results will vary by device and lighting.
+
+## ⚠️ Known limitations
 
 - Needs a phone that supports ARCore Augmented Faces
 - Tested on one device only
@@ -103,18 +175,36 @@ Tested on a **Samsung Galaxy S23 Ultra**. Observed in one diagnostic session: ab
 - No in-app gallery, undo/redo, symmetry, layers or paint templates yet
 - Saved artwork goes to the phone gallery; there is no in-app viewer
 
-## Future work
+## 🚀 Future work
 
-Gallery and sharing, brush opacity and more brush styles, custom colour picker, undo/redo, symmetry drawing, performance profiling on more devices.
+- [ ] Gallery and sharing
+- [ ] Brush opacity and more brush styles
+- [ ] Custom colour picker
+- [ ] Undo / redo
+- [ ] Symmetry drawing
+- [ ] Performance profiling on more devices
 
-## Team
+## 👥 Team
 
-- Deepanjali Singh
-- KVSL Geetika Reddy
+<div align="center">
 
-## Credits and license
+| | |
+|:---:|:---:|
+| **Deepanjali Singh** | **KVSL Geetika Reddy** |
+
+</div>
+
+## 🙏 Credits and license
 
 - [NativeGallery](https://github.com/yasirkula/UnityNativeGallery) by Yasin Kula (used for saving to the gallery)
 - Unity, AR Foundation and Google ARCore documentation and samples
 
 See the [LICENSE](LICENSE) file for this project's license.
+
+<div align="center">
+
+<br>
+
+⭐ If you like this project, give it a star!
+
+</div>
